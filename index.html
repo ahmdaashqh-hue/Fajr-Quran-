@@ -1,0 +1,116 @@
+
+px 16px;text-align:center;color:#bca88d;font-size:11px}
+button{font-family:inherit}
+button:focus-visible,.tile:focus-visible{outline:2px solid var(--gold)}
+@media(min-width:700px){
+ .section,.hero{max-width:760px;margin-left:auto;margin-right:auto}
+ .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .hero{min-height:280px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+ <div class="brand">قُرْآنُ الفَجْر</div>
+ <div class="subtitle">مَصْحَفٌ يَجْمَعُ النُّورَ وَالسَّكِينَة</div>
+ <div class="salawat">السَّلَامُ عَلَيْكَ يَا أَبَا عَبْدِ اللَّهِ</div>
+</header>
+
+<section class="hero">
+ <div class="ornament">۞ ✦ ۞</div>
+ <div class="dome">🕌</div>
+ <h2>نُورُ كَرْبَلَاء</h2>
+ <p>بِذِكْرِ اللهِ تَطْمَئِنُّ القُلُوب</p>
+ <div class="ornament">﷽</div>
+</section>
+
+<section class="section">
+ <h2 class="heading">الوقت والتقويم</h2>
+ <div class="clockbox">
+  <div class="clock" aria-label="ساعة زخرفية">
+   <span class="clocknum n12">١٢</span>
+   <span class="clocknum n3">٣</span>
+   <span class="clocknum n6">٦</span>
+   <span class="clocknum n9">٩</span>
+   <span class="hand hour"></span>
+   <span class="hand minute"></span>
+  </div>
+  <div class="date">
+   <strong id="time">--:--:--</strong><br>
+   <span id="gregorian">جاري تحميل التاريخ...</span><br>
+   <span id="hijri">التاريخ الهجري يعتمد على التقويم المتاح</span>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <h2 class="heading">مواقيت الصلاة</h2>
+ <div class="prayers">
+  <div class="prayer"><span>الفجر</span><b>—</b></div>
+  <div class="prayer"><span>الشروق</span><b>—</b></div>
+  <div class="prayer"><span>الظهر</span><b>—</b></div>
+  <div class="prayer"><span>العصر</span><b>—</b></div>
+  <div class="prayer"><span>المغرب</span><b>—</b></div>
+  <div class="prayer"><span>العشاء</span><b>—</b></div>
+ </div>
+ <p style="font-size:11px;color:#c8b39a">تُربط المواقيت بموقعك وطريقة الحساب في مرحلة التطوير التالية.</p>
+</section>
+
+<section class="section">
+ <h2 class="heading">أبواب النور</h2>
+ <div class="grid">
+  <div class="tile" onclick="showSection('القرآن الكريم')">
+   <span class="symbol">📖</span><h3>القرآن الكريم</h3><p>المصحف وفهرس السور</p>
+  </div>
+  <div class="tile" onclick="showSection('الأدعية')">
+   <span class="symbol">🤲</span><h3>الأدعية</h3><p>أدعية ومناجاة</p>
+  </div>
+  <div class="tile" onclick="showSection('الزيارات')">
+   <span class="symbol">🕌</span><h3>الزيارات</h3><p>زيارة عاشوراء وغيرها</p>
+  </div>
+  <div class="tile" onclick="showSection('المكتبة الشيعية')">
+   <span class="symbol">📚</span><h3>المكتبة الشيعية</h3><p>مصادر التراث الإسلامي</p>
+  </div>
+  <div class="tile" onclick="showSection('القبلة')">
+   <span class="symbol">🧭</span><h3>اتجاه القبلة</h3><p>تحديد الاتجاه لاحقاً</p>
+  </div>
+  <div class="tile" onclick="showSection('المفضلة')">
+   <span class="symbol">⭐</span><h3>المفضلة</h3><p>مواضعك المحفوظة</p>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <h2 class="heading">نفحات حسينية</h2>
+ <div class="note">
+  السَّلَامُ عَلَيْكَ يَا أَبَا عَبْدِ اللَّهِ<br>
+  وَعَلَى الأَرْوَاحِ الَّتِي حَلَّتْ بِفِنَائِكَ
+ </div>
+</section>
+
+<footer>
+ قُرْآنُ الفَجْر · نُورٌ وَذِكْرٌ وَسَكِينَة<br>
+ واجهة أولية قابلة للتطوير
+</footer>
+
+<script>
+function updateClock(){
+ const now=new Date();
+ document.getElementById('time').textContent=
+  now.toLocaleTimeString('ar-IQ',{hour12:true});
+ document.getElementById('gregorian').textContent=
+  'الميلادي: '+now.toLocaleDateString('ar-IQ');
+ try{
+  document.getElementById('hijri').textContent=
+   'الهجري: '+new Intl.DateTimeFormat('ar-SA-u-ca-islamic',{dateStyle:'long'}).format(now);
+ }catch(e){}
+}
+function showSection(name){
+ alert('قسم '+name+'\nسيتم إضافة محتواه الكامل في الخطوة التالية.');
+}
+updateClock();
+setInterval(updateClock,1000);
+</script>
+</body>
+</html>
